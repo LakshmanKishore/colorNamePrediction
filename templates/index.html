@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/app.css">
+    <title>Color Name Prediction</title>
+</head>
+
+<body>
+    <h1 align="center">Color Name Prediction</h1>
+    <div class="introduction jumbotron">
+        <div class="container">
+            <h3> Welcome to my Color Name Prediction Application </h3>
+            <hr>
+            <h5>How this application works?</h5>
+            <div>
+                This app takes an image from the user. When user clicks on any part of the image, The rgb value of the
+                pixel is stored and given to the pre trained Machine Learning Model.
+                The model will take rgb value and predicts the color name.
+                The final color name is displyed to the user.
+            </div>
+            <hr>
+            <h5>How to use this app?</h5>
+            <ul>
+                <li>Select an image.</li>
+                <ul>
+                    <li>If the image is from internet copy the image address and paste it into the text box below.
+                        <br> (NOTE: Some images may not be accessible)
+                    </li>
+                    <li>If the image is from you device. Click on Choose file button and select the image from your
+                        device.</li>
+                </ul>
+                <li>The image will be shown below.</li>
+                <li>Click on any part of the image to get the color name.</li>
+                <li>Color name is shown above the image.</li>
+            </ul>
+            <hr>
+        </div>
+    </div>
+    <div align="center" class="inputImage">
+        <div class="form-group">
+            <div><label for="file" style="cursor: pointer; margin-right: 12rem;">Upload Image</label></div>
+            <input type="file" accept="image/*" name="image" id="file" class="imageInput form-control-file">
+        </div>
+        <h6>OR</h6>
+        <div class="form-group">
+            <div><label for="urlText">Enter URL for fetching the image:</label></div>
+            <input type="text" id="urlText" class="urlImage">
+            <button class="submit btn btn-success">SUBMIT</button>
+        </div>
+    </div>
+    <div align="center">
+        <div class="answer"></div>
+        <div><canvas hidden="true" height="1000" width="700" /></div>
+    </div>
+
+    <script src="/static/app.js"></script>
+</body>
+
+</html>
