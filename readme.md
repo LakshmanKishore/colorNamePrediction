@@ -14,7 +14,7 @@ which is trained with 865 different colors.
   
 ## Demo
 
-![](/static/name-of-gif-file.gif)
+![](https://github.com/LakshmanKishore/colorNamePrediction/blob/main/static/colorNamePrediction.gif)
 
   
 ## Lessons Learned
