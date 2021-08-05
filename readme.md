@@ -14,7 +14,7 @@ which is trained with 865 different colors.
   
 ## Demo
 
-![](https://github.com/LakshmanKishore/colorNamePrediction/blob/main/static/colorNamePrediction.gif)
+![](https://github.com/LakshmanKishore/colorNamePrediction/blob/main/static/colorName.gif)
 
   
 ## Lessons Learned
