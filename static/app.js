@@ -1,5 +1,6 @@
 let imageInput = document.querySelector('.imageInput');
 let introduction = document.querySelector('.introduction');
+let image = document.querySelector('.image');
 let canvas = document.querySelector('canvas');
 let answer = document.querySelector('.answer');
 let submit = document.querySelector('.submit');
@@ -7,54 +8,16 @@ let urlImage = document.querySelector('.urlImage');
 
 let c = canvas.getContext('2d');
 
-function displayImage(myImage) {
-    introduction.hidden = true;
-    canvas.hidden = false;
-    let MAX_WIDTH = window.innerWidth - 20;
-    let MAX_HEIGHT = window.innerHeight - 200;
-    let width = myImage.width;
-    let height = myImage.height;
-    console.log(MAX_WIDTH, MAX_HEIGHT);
-
-    if (width > height) {
-        if (width > MAX_WIDTH) {
-            height *= MAX_WIDTH / width;
-            width = MAX_WIDTH;
-        }
-    } else {
-        if (height > MAX_HEIGHT) {
-            width *= MAX_HEIGHT / height;
-            height = MAX_HEIGHT;
-        }
-    }
-
-    canvas.width = width;
-    canvas.height = height;
-    answer.width = canvas.width;
-    c.drawImage(myImage, 0, 0, width, height);
-}
-
 function loadImage(src) {
-    let myImage = new Image();
-    myImage.crossOrigin = "Anonymous";
-    myImage.src = src;
-    myImage.onload = function () {
-        displayImage(myImage);
-    }
+    introduction.hidden = true;
+    image.hidden = false;
+    image.src = src;
 }
 
 function loadImageFromUrl() {
-    fetch(urlImage.value)
-        .then(function () {
-            loadImage(urlImage.value);
-            // console.log("Fetched");
-        })
-        .catch(function () {
-            answer.innerText = "Cannot fetch this image";
-            introduction.hidden = true;
-            canvas.hidden = true;
-            // console.log("Not able to fetch")
-        });
+    introduction.hidden = true;
+    image.hidden = false;
+    image.src = urlImage.value;
 }
 
 function loadFile(e) {
@@ -82,28 +45,45 @@ function displayAnswer(text, rgb) {
     colorBox.style.backgroundColor = "rgb(" + rgb + ")";
 }
 
+function useCanvas(el, image, callback) {
+    el.width = image.width;
+    el.height = image.height;
+    el.getContext('2d')
+        .drawImage(image, 0, 0, image.width, image.height);
+    return callback();
+}
+
 function predict(e) {
-    let x = e.layerX, y = e.layerY;
-    let rgb = getColor(x, y);
-    let rgb_string = rgb[0] + "," + rgb[1] + "," + rgb[2];
-    console.log(rgb_string);
-    sender = JSON.stringify(rgb_string);
-    fetch('/predict', {
-        method: 'POST', // or 'PUT'
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: sender,
-    })
-        .then(function (response) {
-            return response.json();
-        }).then(function (text) {
-            displayAnswer(text, rgb_string);
-        });
+    if (e.offsetX) {
+        x = e.offsetX;
+        y = e.offsetY;
+    }
+    else if (e.layerX) {
+        x = e.layerX;
+        y = e.layerY;
+    }
+    image.crossOrigin = "Anonymous";
+    useCanvas(canvas, image, function () {
+        let rgb = getColor(x, y);
+        rgb_string = rgb[0] + "," + rgb[1] + "," + rgb[2];
+        console.log(rgb_string);
+        sender = JSON.stringify(rgb_string);
+        fetch('/predict', {
+            method: 'POST', // or 'PUT'
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: sender,
+        })
+            .then(function (response) {
+                return response.json();
+            }).then(function (text) {
+                displayAnswer(text, rgb_string);
+            });
+    });
 };
 
-imageInput.addEventListener('change', loadFile);
-canvas.addEventListener('click', predict);
-submit.addEventListener('click', loadImageFromUrl);
 
-console.log("Working");
+imageInput.addEventListener('change', loadFile);
+image.addEventListener('click', predict);
+submit.addEventListener('click', loadImageFromUrl);
