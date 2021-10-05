@@ -1,9 +1,9 @@
 
 # Color Name Prediction
 
-Predicts the color name when a user clicks
-on an image with pretrained model,
-which is trained with 865 different colors.
+Predicts the color name when a user clicks on a image.
+I have used KNN to find the nearest Color Name of the RGB value.
+The dataset contains nearly 865 Color Names.
 
 ## Tech Stack
 
@@ -14,7 +14,7 @@ which is trained with 865 different colors.
   
 ## Demo
 
-![](https://github.com/LakshmanKishore/colorNamePrediction/blob/main/static/colorName.gif)
+![](/static/colorName.gif)
 
   
 ## Lessons Learned

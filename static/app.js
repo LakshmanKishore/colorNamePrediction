@@ -3,21 +3,12 @@ let introduction = document.querySelector('.introduction');
 let image = document.querySelector('.image');
 let canvas = document.querySelector('canvas');
 let answer = document.querySelector('.answer');
-let submit = document.querySelector('.submit');
-let urlImage = document.querySelector('.urlImage');
-
 let c = canvas.getContext('2d');
 
 function loadImage(src) {
     introduction.hidden = true;
     image.hidden = false;
     image.src = src;
-}
-
-function loadImageFromUrl() {
-    introduction.hidden = true;
-    image.hidden = false;
-    image.src = urlImage.value;
 }
 
 function loadFile(e) {
@@ -66,7 +57,6 @@ function predict(e) {
     useCanvas(canvas, image, function () {
         let rgb = getColor(x, y);
         rgb_string = rgb[0] + "," + rgb[1] + "," + rgb[2];
-        console.log(rgb_string);
         sender = JSON.stringify(rgb_string);
         fetch('/predict', {
             method: 'POST', // or 'PUT'
@@ -86,4 +76,3 @@ function predict(e) {
 
 imageInput.addEventListener('change', loadFile);
 image.addEventListener('click', predict);
-submit.addEventListener('click', loadImageFromUrl);
