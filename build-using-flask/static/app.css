@@ -1,0 +1,33 @@
+.colorBox {
+    width: 100px;
+    height: 1.25rem;
+    display: inline-flex;
+    margin-left: 5px;
+    border: 2px solid black;
+}
+
+.answer {
+    display: flex;
+    justify-content: center;
+}
+
+.image {
+    max-width: 100%;
+    height: auto;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    color: white;
+    background-repeat: no-repeat;
+    background: #FF512F;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to bottom, #F09819, #FF512F);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to bottom, #F09819, #FF512F);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background-attachment: fixed;
+}

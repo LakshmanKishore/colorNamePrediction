@@ -1,52 +1,18 @@
-
 # Color Name Prediction
 
-Predicts the color name when a user clicks on a image.
-I have used KNN to find the nearest Color Name of the RGB value.
-The dataset contains nearly 865 Color Names.
+**Color Name Prediction** is a web application that predicts the name of a color when a user clicks on an image. It uses a K-Nearest Neighbors (KNN) algorithm to find the nearest color name based on the RGB value. The dataset contains a diverse set of approximately 865 color names.
 
-## Tech Stack
-
-**Client:** HTML, CSS, JS
-
-**Server:** Flask
-
-  
 ## Demo
 
-![](/static/colorName.gif)
+![Color Name Prediction Demo](./colorName.gif)
 
-  
-## Lessons Learned
 
-I was able to create a Machine Learning model. 
-I learnt about KNN classifier. With the help of flask,
-I was able to link the model to HTML file and used for live prediction.
-  
-## Run Locally
+## Features
 
-Clone the project
+- Click on an image to sample the color.
+- The application predicts the color's name based on its RGB value.
+- Utilizes a K-Nearest Neighbors algorithm for color name prediction.
+- Provides color naming for approximately 865 different shades.
+- Offers an interactive and user-friendly interface.
 
-```bash
-  git clone https://github.com/LakshmanKishore/colorNamePrediction.git
-```
-
-Go to the project directory
-
-```bash
-  cd my-project
-```
-
-Install dependencies
-
-```bash
-  pip install -r requirements.txt
-```
-
-Start the server
-
-```bash
-  python app.py
-```
-
-# You can watch the code live [here](https://lakshman-colorname.herokuapp.com)
+You can experience the application in action by watching the [live demo](https://lakshmankishore.github.io/colorNamePrediction/).
