@@ -19,24 +19,21 @@
         <div class="container">
             <h3> Welcome to my Color Name Prediction Application </h3>
             <hr>
-            <h5>How this application works?</h5>
+            <h5>How this application works:</h5>
             <div>
-                This app takes an image from the user. When user clicks on any part of the image, The rgb value of the
-                pixel is stored and given to the pre trained Machine Learning Model.
-                The model will take rgb value and predicts the color name.
-                The final color name is displyed to the user.
+                This app uses the <b>K-Nearest Neighbors (KNN) algorithm</b> to predict color names based on RGB values. It provides a straightforward way to find the name of a color within an image. Here's how to use it:
+                <ol>
+                    <li>Click on the "Choose file" button and select an image from your device.</li>
+                    <li>The selected image will be displayed below.</li>
+                    <li>Click on any part of the image to capture the RGB value of that pixel.</li>
+                    <li>The KNN algorithm processes the RGB value and predicts the corresponding color name.</li>
+                    <li>The predicted color name is displayed to the user above the image.</li>
+                </ol>
             </div>
-            <hr>
-            <h5>How to use this app?</h5>
-            <ul>
-                <li>Click on Choose file button and select the image from your device.</li>
-                <li>The image will be shown below.</li>
-                <li>Click on any part of the image to get the Color Name.</li>
-                <li>Color Name is shown above the image.</li>
-            </ul>
             <hr>
         </div>
     </div>
+    
     <div align="center" class="inputImage">
         <div class="form-group">
             <div><label for="file" style="cursor: pointer; margin-right: 12rem;">Upload Image</label></div>
